@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resource Planner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Resource Planner</h1>
+      <div class="header-actions">
+        <button id="load-sample" type="button" class="secondary">Load sample data</button>
+        <button id="clear-all" type="button" class="danger">Clear everything</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== The weekly planner grid ===== -->
+      <section class="card">
+        <div class="section-header">
+          <h2>Weekly plan</h2>
+          <div class="week-nav">
+            <button id="prev-weeks" type="button" class="secondary">&larr; Earlier</button>
+            <button id="this-week" type="button" class="secondary">This week</button>
+            <button id="next-weeks" type="button" class="secondary">Later &rarr;</button>
+          </div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch level-ok"></i>Has free time</span>
+          <span><i class="swatch level-full"></i>Fully booked</span>
+          <span><i class="swatch level-over"></i>Overbooked</span>
+        </div>
+        <div class="grid-wrapper">
+          <table id="planner-grid" class="planner-grid"></table>
+        </div>
+        <p id="grid-empty" class="empty-message">Add a person to start planning.</p>
+      </section>
+
+      <div class="columns">
+        <!-- ===== People ===== -->
+        <section class="card">
+          <h2>People</h2>
+          <form id="person-form" class="form">
+            <label>Name <input name="name" required placeholder="e.g. Alex Kim" /></label>
+            <label>Role <input name="role" placeholder="e.g. Developer" /></label>
+            <label>Hours per week
+              <input name="capacity" type="number" min="1" max="168" value="40" required />
+            </label>
+            <button type="submit">Add person</button>
+          </form>
+          <ul id="people-list" class="item-list"></ul>
+        </section>
+
+        <!-- ===== Projects ===== -->
+        <section class="card">
+          <h2>Projects</h2>
+          <form id="project-form" class="form">
+            <label>Name <input name="name" required placeholder="e.g. Website Redesign" /></label>
+            <label>Colour <input name="color" type="color" value="#4f7cff" /></label>
+            <button type="submit">Add project</button>
+          </form>
+          <ul id="project-list" class="item-list"></ul>
+        </section>
+
+        <!-- ===== Assignments ===== -->
+        <section class="card">
+          <h2>Assignments</h2>
+          <form id="assignment-form" class="form">
+            <label>Person <select name="personId" required></select></label>
+            <label>Project <select name="projectId" required></select></label>
+            <label>Start <input name="start" type="date" required /></label>
+            <label>End <input name="end" type="date" required /></label>
+            <label>Hours per week
+              <input name="hoursPerWeek" type="number" min="1" max="168" value="20" required />
+            </label>
+            <p id="assignment-errors" class="form-errors" role="alert"></p>
+            <button type="submit">Add assignment</button>
+          </form>
+          <ul id="assignment-list" class="item-list"></ul>
+        </section>
+      </div>
+    </main>
+
+    <!-- Load the logic first, then the code that draws the page. -->
+    <script src="planner.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

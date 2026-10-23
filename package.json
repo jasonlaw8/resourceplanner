@@ -1,0 +1,9 @@
+{
+  "name": "resourceplanner",
+  "version": "0.1.0",
+  "description": "A simple weekly resource planner: who is working on what, and who has free time.",
+  "private": true,
+  "scripts": {
+    "test": "node --test"
+  }
+}
